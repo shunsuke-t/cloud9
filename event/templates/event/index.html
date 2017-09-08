@@ -1,0 +1,11 @@
+{% if latest_event_list %}
+    <ul>
+    {% for event in latest_event_list %}
+        <li><a href="{% url 'event:detail' event.id %}">{{ event.event_name }}</a></li>
+    {% endfor %}
+    <form action="{% url 'event:contact' %}">{% csrf_token %}
+　　<input type="submit" value="New Event" />
+    </ul>
+{% else %}
+    <p>No event are available.</p>
+{% endif %}
